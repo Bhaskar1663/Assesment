@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Seat Booking</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="train-seats">
+            <h1>Train Seat Layout</h1>
+            <div class="seats-container">
+                {% for seat in seats %}
+                <div class="seat {% if seat.booked %}booked{% endif %}" data-seat="{{ seat.seat_number }}">
+                    {{ seat.seat_number }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="booking-form">
+            <h2>Book Your Seats</h2>
+            <form id="booking-form">
+                <label for="num-seats">Number of seats to book (1-7):</label>
+                <input type="number" id="num-seats" name="num_seats" min="1" max="7" required>
+                <button type="submit">Book Seats</button>
+            </form>
+            <div id="booking-result"></div>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
